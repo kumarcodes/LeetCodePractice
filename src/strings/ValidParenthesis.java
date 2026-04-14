@@ -12,26 +12,18 @@ public class ValidParenthesis {
 
     private static boolean isValidParenthesisChecker(String str) {
         Stack<Character> stack = new Stack<>();
-        for(int i=0;i<str.length();i++){
-            if(str.charAt(i)=='(' || str.charAt(i)=='{' || str.charAt(i)=='['){
-                stack.push(str.charAt(i));
-            }
-            else {
-                if(stack.isEmpty())
-                    return false;
-
-                else if(!stack.isEmpty() && ((str.charAt(i)==']' && stack.peek()=='[')
-                        || (str.charAt(i)=='}' && stack.peek()=='{')
-                        || (str.charAt(i)==')' && stack.peek()=='(')
-                ))
-                    stack.pop();
-                else
-                    return false;
-            }
+        for (char ch : str.toCharArray()) {
+            if (ch == '(' || ch == '[' || ch == '{')
+                stack.push(ch);
+            else if (!stack.isEmpty() && (ch == ')' && stack.peek() == '('))
+                stack.pop();
+            else if (!stack.isEmpty() && (ch == '}' && stack.peek() == '{'))
+                stack.pop();
+            else if (!stack.isEmpty() && (ch == ']' && stack.peek() == '['))
+                stack.pop();
+            else
+                return false;
         }
-        if(stack.isEmpty())
-            return true;
-
-        return false;
+        return stack.isEmpty();
     }
 }
