@@ -1,3 +1,5 @@
+package arrays;
+
 public class MirrorDistanceInteger {
     public static void main(String[] args) {
         int input = 70;
