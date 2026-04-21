@@ -13,6 +13,7 @@ public class AddBinary {
         int num2 = Integer.parseInt(str2, 2);
         int sum = num1 + num2;
         return Integer.toBinaryString(sum);
+        git commit --amend --date="1 days ago"
 
     }
 }
