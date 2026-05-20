@@ -1,34 +1,38 @@
 package strings;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class IsomorphicStrings {
     public static void main(String[] args) {
-        String s = "badc";
-        String t = "baba";
+        String s = "egg";
+        String t = "add";
         boolean isIsomorphic = checkIsomorphicStrings(s, t);
         System.out.println(isIsomorphic);
     }
 
     private static boolean checkIsomorphicStrings(String s, String t) {
+
         if (s.length() != t.length())
             return false;
-        int count1 = 0;
-        int count2 = 0;
-        char[] arr1 = s.toCharArray();
-        Arrays.sort(arr1);
-        String s1 = new String(arr1);
-        char[] arr2 = t.toCharArray();
-        Arrays.sort(arr2);
-        String t1 = new String(arr2);
-        for (int i = 0; i < s1.length() - 1; i++) {
-            if (s1.charAt(i) != s1.charAt(i + 1)) {
-                count1++;
-            }
-            if (t1.charAt(i) != t1.charAt(i + 1)) {
-                count2++;
-            }
+        Map<Character, Character> map1 = new HashMap<>();
+        Map<Character, Character> map2 = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            Character c1 = s.charAt(i);
+            Character c2 = t.charAt(i);
+            if (map1.containsKey(c1)) {
+                if (map1.get(c1) != c2)
+                    return false;
+            } else
+                map1.put(c1, c2);
+
+            if (map2.containsKey(c2)) {
+                if (map2.get(c2) != c1)
+                    return false;
+            } else
+                map2.put(c2, c1);
         }
-        return count2 == count1;
+        return true;
     }
 }
