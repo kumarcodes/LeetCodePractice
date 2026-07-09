@@ -30,8 +30,8 @@ public class PowerOfTwo {
     private static boolean checkPowerOfTwo(int num) {
         if (num <= 0)
             return false;
-        while (num % 2 == 0) {
-            num = num / 2;
+        while (num % 4 == 0) {
+            num = num / 4;
         }
         return num == 1;
     }
