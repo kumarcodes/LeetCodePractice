@@ -20,10 +20,14 @@
 
 package arrays;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class MoveZeroes {
     public static void main(String[] args) {
-        int[] arr = {4,2,4,0,0,3,0,5,1,0};
+        int[] arr = {4, 2, 4, 0, 0, 3, 0, 5, 1, 0};
         int[] result = moveAllZeroes(arr);
+        int[] result1 = moveAllZeroesUsingStreams(arr);
         for (int num : result) {
             System.out.println(num);
         }
@@ -46,6 +50,12 @@ public class MoveZeroes {
             }
 
         }
+        return arr;
+    }
+
+    private static int[] moveAllZeroesUsingStreams(int[] arr) {
+        int[] res = Arrays.stream(arr).filter(x -> x != 0).toArray();
+        IntStream.range(0, arr.length).forEach(i -> arr[i] = i < res.length ? res[i] : 0);
         return arr;
     }
 }
