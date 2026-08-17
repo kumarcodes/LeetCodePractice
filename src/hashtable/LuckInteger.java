@@ -20,6 +20,7 @@ public class LuckInteger {
             if (Objects.equals(entry.getKey(), entry.getValue()))
                 return entry.getKey();
         }
+
         System.out.println(countMap);
 
         return -1;
