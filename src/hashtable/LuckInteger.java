@@ -19,6 +19,7 @@ public class LuckInteger {
         for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
             if (Objects.equals(entry.getKey(), entry.getValue()))
                 return entry.getKey();
+
         }
 
         System.out.println(countMap);
